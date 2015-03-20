@@ -221,7 +221,7 @@ when 'init'
 when 'runit'
   runit_service 'consul' do
     supports status: true, restart: true, reload: true
-    action [:enable, :start]
+    action [:enable], :delayed
     subscribes :restart, "file[#{consul_config_filename}]"
     subscribes :restart, "link[#{Chef::Consul.active_binary(node)}]"
     log true
