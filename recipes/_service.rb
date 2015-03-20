@@ -230,6 +230,7 @@ when 'runit'
   service 'consul' do
     supports status: true, restart: true, reload: true
     reload_command "'#{node['runit']['sv_bin']}' hup consul"
+	action :nothing
   end
 when 'systemd'
   template '/etc/systemd/system/consul.service' do
